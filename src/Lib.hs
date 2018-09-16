@@ -1,5 +1,6 @@
 module Lib
-    ( assessCandidateIO
+    ( assessCandidate
+    , readCandidate
     ) where
 
 import Lib.Types
@@ -113,4 +114,3 @@ assessCandidate candidates = do
                   then "passed"
                   else "failed"
   return statement
-

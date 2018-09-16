@@ -4,4 +4,7 @@ module Main where
 import Lib
 
 main :: IO ()
-main = assessCandidate
+main = do
+  candidate <- readCandidate
+  candidateTest <- assessCandidate $ pure candidate
+  putStrLn candidateTest
