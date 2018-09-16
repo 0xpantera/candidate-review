@@ -17,4 +17,11 @@ viable candidate = all (== True) tests
                 ,educationMin]
 
 
-                               
+readInt :: IO Int
+readInt = getLine >>= (return . read)
+
+readGrade :: IO Grade
+readGrade = getLine >>= (return . read)
+
+readDegree :: IO Degree
+readDegree = getLine >>= (return . read)
