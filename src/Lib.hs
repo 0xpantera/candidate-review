@@ -4,6 +4,8 @@ module Lib
 
 import Lib.Types
 import qualified Data.Map as Map
+
+
 viable :: Candidate -> Bool
 viable candidate = all (== True) tests
   where passedCoding = codeReview candidate > B
@@ -77,6 +79,7 @@ candidateDB = Map.fromList [(1,candidate1)
                             ,(3,candidate3)]
 
 
+
 assessCandidateMaybe :: Int -> Maybe String
 assessCandidateMaybe cId = do
   candidate <- Map.lookup cId candidateDB
@@ -87,4 +90,27 @@ assessCandidateMaybe cId = do
   return statement
 
 
-  
+candidates :: [Candidate]
+candidates = [candidate1
+              ,candidate2
+              ,candidate3]
+
+assessCandidateList :: [Candidate] -> [String]
+assessCandidateList candidates = do
+  candidate <- candidates
+  let passed = viable candidate
+  let statement = if passed
+                  then "passed"
+                  else "failed"
+  return statement
+
+-- Generalize solution for IO, Maybe, List
+assessCandidate :: Monad m => m Candidate -> m String
+assessCandidate candidates = do
+  candidate <- candidates
+  let passed = viable candidate
+  let statement = if passed
+                  then "passed"
+                  else "failed"
+  return statement
+

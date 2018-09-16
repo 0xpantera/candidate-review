@@ -4,4 +4,4 @@ module Main where
 import Lib
 
 main :: IO ()
-main = assessCandidateIO
+main = assessCandidate
